@@ -1,0 +1,148 @@
+<div class="container mt-5">
+  <h2>{{ vehicleId ? "Update Vehicle" : "Create Vehicle" }}</h2>
+
+  <div
+    *ngIf="isLoadingVehicle$ | async"
+    class="d-flex justify-content-center align-items-center"
+    style="height: 200px"
+  >
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading vehicle details...</span>
+    </div>
+  </div>
+
+  <form
+    *ngIf="!(isLoadingVehicle$ | async)"
+    [formGroup]="vehicleForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="row">
+      <div class="col-12 col-md-6 form-group">
+        <label for="manufacturerName">Manufacturer Name</label>
+        <input
+          id="manufacturerName"
+          type="text"
+          class="form-control"
+          formControlName="manufacturerName"
+          [ngClass]="{
+            'is-invalid':
+              (f.manufacturerName.touched || submitted) &&
+              f.manufacturerName.invalid
+          }"
+          placeholder="Enter Manufacturer Name"
+        />
+        <div
+          *ngIf="
+            (f.manufacturerName.touched || submitted) &&
+            f.manufacturerName.invalid
+          "
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.manufacturerName.errors?.required">
+            Manufacturer Name is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 form-group">
+        <label for="model">Model</label>
+        <input
+          id="model"
+          type="text"
+          class="form-control"
+          formControlName="model"
+          [ngClass]="{
+            'is-invalid': (f.model.touched || submitted) && f.model.invalid
+          }"
+          placeholder="Enter Model"
+        />
+        <div
+          *ngIf="(f.model.touched || submitted) && f.model.invalid"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.model.errors?.required">Model is required.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6 form-group">
+        <label for="modelYear">Model Year</label>
+        <input
+          id="modelYear"
+          type="number"
+          class="form-control"
+          formControlName="modelYear"
+          [ngClass]="{
+            'is-invalid':
+              (f.modelYear.touched || submitted) && f.modelYear.invalid
+          }"
+          placeholder="Enter Model Year (2015 - Current Year)"
+        />
+        <div
+          *ngIf="(f.modelYear.touched || submitted) && f.modelYear.invalid"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.modelYear.errors?.required">
+            Model Year is required.
+          </div>
+          <div *ngIf="f.modelYear.errors?.min">
+            Model Year must be at least 2015.
+          </div>
+          <div *ngIf="f.modelYear.errors?.max">
+            Model Year cannot be in the future.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 form-group">
+        <label for="colour">Colour</label>
+
+        <div *ngIf="isLoadingColours$ | async; else colourList">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading colours...</span>
+          </div>
+        </div>
+
+        <ng-template #colourList>
+          <select
+            id="colour"
+            class="form-select"
+            formControlName="colourId"
+            aria-label="Select Colour"
+          >
+            <option [ngValue]="null">No Colour</option>
+
+            <option
+              *ngFor="let colour of colours$ | async"
+              [ngValue]="colour.colourId"
+            >
+              {{ colour.colourName }}
+            </option>
+          </select>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 d-flex justify-content-end">
+        <button
+          *ngIf="vehicleId"
+          type="button"
+          class="btn btn-secondary me-2"
+          [disabled]="!vehicleId"
+          (click)="onDelete()"
+        >
+          Delete
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary ms-2"
+          [disabled]="!vehicleForm.valid"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

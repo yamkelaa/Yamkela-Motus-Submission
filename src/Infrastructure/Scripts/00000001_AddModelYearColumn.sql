@@ -1,0 +1,5 @@
+ALTER TABLE [dbo].[Vehicles]
+ADD ModelYear INT NOT NULL DEFAULT 2015;
+
+
+
