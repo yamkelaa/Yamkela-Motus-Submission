@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Colour } from "../types/colours/colours.model";
+import { Colour } from "../../types/colours/colours.model";
 
 @Injectable({
   providedIn: "root",

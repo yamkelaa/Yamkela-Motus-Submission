@@ -2,7 +2,7 @@ import { ColourStateModel } from "./colour-state.model";
 import { Action, Selector, State, StateContext, StateToken } from "@ngxs/store";
 import { Injectable } from "@angular/core";
 import { ColourActions } from "./colour.actions";
-import { ColoursClientService } from "src/app/services/colour-client.service";
+import { ColoursClientService } from "src/app/services/colours/colour-client.service";
 import { of, tap, catchError } from "rxjs";
 import produce from "immer";
 import { Colour } from "../../types/colours/colours.model";

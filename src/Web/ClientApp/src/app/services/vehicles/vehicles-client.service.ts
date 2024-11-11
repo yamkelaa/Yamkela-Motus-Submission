@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { VehicleListItemModel } from '../types/vehicles/vehicle-list-item.model';
-import { PaginatedListModel } from '../types/paginated-list.model';
-import { Vehicle } from '../types/vehicles/vehicle.model';
-import { ApiResponse } from '../types/apiResponse.model';
-import { VehicleForm } from '../types/vehicles/vehicleForm.model';
+import { VehicleListItemModel } from '../../types/vehicles/vehicle-list-item.model';
+import { PaginatedListModel } from '../../types/paginated-list.model';
+import { Vehicle } from '../../types/vehicles/vehicle.model';
+import { ApiResponse } from '../../types/apiResponse.model';
+import { VehicleForm } from '../../types/vehicles/vehicleForm.model';
 @Injectable({
   providedIn: 'root',
 })

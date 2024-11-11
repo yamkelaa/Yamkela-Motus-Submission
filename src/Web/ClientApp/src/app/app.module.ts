@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  // Already imported
-import { VehiclesClientService } from "./services/vehicles-client.service";
+import { VehiclesClientService } from "./services/vehicles/vehicles-client.service";
 import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { VehicleState } from './stores/vehicles/vehicle.state';
@@ -16,7 +16,7 @@ import { PaginationComponent } from './components/home/pagination/pagination.com
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { ColourState } from './stores/colours/colour.state';
 import { ToastrModule } from 'ngx-toastr';
-import { ColoursClientService } from './services/colour-client.service';
+import { ColoursClientService } from './services/colours/colour-client.service';
 
 @NgModule({
   declarations: [

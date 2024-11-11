@@ -2,7 +2,7 @@ import { VehicleStateModel } from "./vehicle-state.model";
 import { Action, Selector, State, StateContext, StateToken } from "@ngxs/store";
 import { Injectable } from "@angular/core";
 import { VehicleActions } from "./vehicle.actions";
-import { VehiclesClientService } from "../../services/vehicles-client.service";
+import { VehiclesClientService } from "../../services/vehicles/vehicles-client.service";
 import { of } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import produce from "immer";
