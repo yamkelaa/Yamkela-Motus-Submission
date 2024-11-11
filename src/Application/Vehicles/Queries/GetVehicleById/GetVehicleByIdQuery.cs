@@ -1,5 +1,6 @@
 ﻿using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.Common.Dto;
+using MotusInterview.Application.Common.Mappings;
 
 
 namespace MotusInterview.Application.Vehicles.Queries.GetVehicleById
@@ -23,9 +24,8 @@ namespace MotusInterview.Application.Vehicles.Queries.GetVehicleById
         public Task<VehiclesDto?> Handle(GetVehicleByIdQuery request, CancellationToken cancellationToken)
         {
             return _context.Vehicles
-            .Where(v => v.VehicleId == request.VehicleId)
-            .ProjectTo<VehiclesDto>(_mapper.ConfigurationProvider)
-            .FirstOrDefaultAsync(cancellationToken);
+                .Where(v => v.VehicleId == request.VehicleId)
+                .ProjectToResultAsync<VehiclesDto>(_mapper.ConfigurationProvider, cancellationToken);
         }
 
     }
