@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: test_sql_server
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password123!
+    ports:
+      - "1433:1433"
+    networks:
+      - test_network
+    volumes:
+      - test_sql_server_data:/var/opt/mssql
+
+networks:
+  test_network:
+    driver: bridge
+
+volumes:
+  test_sql_server_data:

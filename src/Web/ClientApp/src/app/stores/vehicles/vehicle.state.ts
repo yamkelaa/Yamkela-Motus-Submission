@@ -74,6 +74,28 @@ export class VehicleState {
     return state.responseMessage;
   }
 
+  private handleApiResponse(ctx: StateContext<VehicleStateModel>, response: ApiResponse, successMessage: string, failureMessage: string, actionToDispatch?: any) {
+    ctx.patchState({ isLoading: false });
+
+    if (response.succeeded) {
+      ctx.patchState({
+        responseMessage: successMessage,
+      });
+      if (actionToDispatch) {
+        ctx.dispatch(actionToDispatch);
+      }
+    } else {
+      ctx.patchState({
+        responseMessage: failureMessage,
+      });
+    }
+  }
+
+  private handleError(ctx: StateContext<VehicleStateModel>, error: any, failureMessage: string) {
+    console.error(failureMessage, error);
+    ctx.patchState({ isLoading: false, responseMessage: failureMessage });
+  }
+
   @Action(VehicleActions.LoadVehicles)
   loadVehicles(ctx: StateContext<VehicleStateModel>, action: VehicleActions.LoadVehicles) {
     const { pageNumber, pageSize } = action;
@@ -93,8 +115,7 @@ export class VehicleState {
         }));
       }),
       catchError((error) => {
-        console.error('Error loading vehicles');
-        ctx.patchState({ isLoading: false, responseMessage: 'Failed to load vehicles' });
+        this.handleError(ctx, error, 'Failed to load vehicles');
         return of(null);
       })
     );
@@ -122,27 +143,14 @@ export class VehicleState {
     const state = ctx.getState();
     const vehicleForm: VehicleForm = action.vehicle;
     ctx.patchState({ isLoading: true, responseMessage: null });
-    return this._vehiclesClient.createVehicle(
-      vehicleForm
-    ).pipe(
-      tap((response: ApiResponse) => {
-        ctx.patchState({ isLoading: false });
 
-        if (response.succeeded) {
-          ctx.patchState({
-            responseMessage: 'Success: Vehicle Created!',
-          });
-          ctx.dispatch(new VehicleActions.LoadVehicles(state.vehicleListItems.pageNumber, state.pageSize));
-        } else {
-          console.log(response.errors)
-          ctx.patchState({
-            responseMessage: 'Error: An error occurred during vehicle creation',
-          });
-        }
+    return this._vehiclesClient.createVehicle(vehicleForm).pipe(
+      tap((response: ApiResponse) => {
+        this.handleApiResponse(ctx, response, 'Success: Vehicle Created!', 'Error: An error occurred during vehicle creation',
+          new VehicleActions.LoadVehicles(state.vehicleListItems.pageNumber, state.pageSize));
       }),
       catchError((error) => {
-        console.error('Error creating vehicle:', error);
-        ctx.patchState({ isLoading: false, responseMessage: 'Error: Failed to create vehicle' });
+        this.handleError(ctx, error, 'Error: Failed to create vehicle');
         return of(null);
       })
     );
@@ -152,24 +160,14 @@ export class VehicleState {
   deleteVehicle(ctx: StateContext<VehicleStateModel>, action: VehicleActions.DeleteVehicle) {
     const state = ctx.getState();
     ctx.patchState({ isLoading: true, responseMessage: null });
-    console.log(action.vehicleId)
+
     return this._vehiclesClient.deleteVehicle(action.vehicleId).pipe(
       tap((response: ApiResponse) => {
-        ctx.patchState({ isLoading: false });
-        if (response.succeeded) {
-          ctx.patchState({
-            responseMessage: 'Success: Vehicle Deleted!',
-          });
-          ctx.dispatch(new VehicleActions.LoadVehicles(state.vehicleListItems.pageNumber, state.pageSize));
-        } else {
-          ctx.patchState({
-            responseMessage: 'Error: Failed to delete vehicle',
-          });
-        }
+        this.handleApiResponse(ctx, response, 'Success: Vehicle Deleted!', 'Error: Failed to delete vehicle',
+          new VehicleActions.LoadVehicles(state.vehicleListItems.pageNumber, state.pageSize));
       }),
       catchError((error) => {
-        console.error('Error deleting vehicle:', error);
-        ctx.patchState({ isLoading: false, responseMessage: 'Error: Failed to delete vehicle' });
+        this.handleError(ctx, error, 'Error: Failed to delete vehicle');
         return of(null);
       })
     );
@@ -187,11 +185,7 @@ export class VehicleState {
         }));
       }),
       catchError((error) => {
-        console.error('Error loading vehicle by ID:', error);
-        ctx.patchState({
-          isLoadingSingle: false,
-          responseMessage: 'Failed to load vehicle details'
-        });
+        this.handleError(ctx, error, 'Failed to load vehicle details');
         return of(null);
       })
     );
@@ -206,26 +200,17 @@ export class VehicleState {
       });
       return of(null);
     }
+
     ctx.patchState({ isLoading: true, responseMessage: null });
     const vehicleForm: VehicleForm = action.vehicleData;
+
     return this._vehiclesClient.updateVehicle(state.selectedVehicle.vehicleId, vehicleForm).pipe(
       tap((response: ApiResponse) => {
-        ctx.patchState({ isLoading: false });
-
-        if (response.succeeded) {
-          ctx.patchState({
-            responseMessage: 'Success: Vehicle Updated!',
-          });
-          ctx.dispatch(new VehicleActions.LoadVehicles(state.vehicleListItems.pageNumber, state.pageSize));
-        } else {
-          ctx.patchState({
-            responseMessage: 'Error: Failed to update vehicle',
-          });
-        }
+        this.handleApiResponse(ctx, response, 'Success: Vehicle Updated!', 'Error: Failed to update vehicle',
+          new VehicleActions.LoadVehicles(state.vehicleListItems.pageNumber, state.pageSize));
       }),
       catchError((error) => {
-        console.error('Error updating vehicle:', error);
-        ctx.patchState({ isLoading: false, responseMessage: 'Error: Failed to update vehicle' });
+        this.handleError(ctx, error, 'Error: Failed to update vehicle');
         return of(null);
       })
     );

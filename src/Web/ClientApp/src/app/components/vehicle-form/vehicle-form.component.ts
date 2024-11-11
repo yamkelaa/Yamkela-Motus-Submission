@@ -8,6 +8,8 @@ import { Observable, Subscription } from 'rxjs';
 import { VehicleActions } from 'src/app/stores/vehicles/vehicle.actions';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'vehicle-form',
@@ -138,7 +140,26 @@ export class VehicleFormComponent implements OnInit, OnDestroy {
     }
   }
 
+
   onDelete(): void {
+    if (this.vehicleId) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true,
+      }).then(result => {
+        if (result.isConfirmed) {
+          this.onConfirmDelete();
+        }
+      });
+    }
+  }
+
+  onConfirmDelete(): void {
     if (this.vehicleId) {
       console.log(this.vehicleId);
       this.store.dispatch(new VehicleActions.DeleteVehicle(this.vehicleId)).subscribe(() => {
