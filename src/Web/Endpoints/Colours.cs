@@ -1,4 +1,4 @@
-﻿using MotusInterview.Application.Common.Dto;
+﻿using MotusInterview.Application.Common.Dto.RequestDto;
 using MotusInterview.Application.VehicleColours.Queries.GetAllColours;
 
 namespace MotusInterview.Web.Endpoints;

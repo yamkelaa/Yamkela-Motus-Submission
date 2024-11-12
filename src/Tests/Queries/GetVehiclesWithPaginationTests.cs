@@ -3,7 +3,6 @@ using NUnit.Framework;
 using AutoMapper;
 using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.Vehicles.Queries.GetVehiclesWithPagination;
-using MotusInterview.Application.Common.Dto;
 using MotusInterview.Application.Common.Models;
 using MockQueryable.Moq;
 using System.Linq;
@@ -11,6 +10,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MotusInterview.Domain.Entities;
+using MotusInterview.Application.Common.Dto.RequestDto;
 
 namespace MotusInterview.Tests.Vehicles.Queries
 {

@@ -5,6 +5,7 @@ using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.Common.Models;
 using MotusInterview.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using MotusInterview.Application.Common.Dto.Requestss;
 
 namespace MotusInterview.Application.Vehicles.Commands.UpdateVehicle
 {

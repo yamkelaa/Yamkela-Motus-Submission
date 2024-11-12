@@ -8,6 +8,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using MotusInterview.Application.Common.Dto.Requestss;
 
 namespace MotusInterview.Application.Vehicles.Commands.CreateVehicle
 {

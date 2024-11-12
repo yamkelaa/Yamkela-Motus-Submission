@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MotusInterview.Domain.Entities;
 
-namespace MotusInterview.Application.Common.Dto;
+namespace MotusInterview.Application.Common.Dto.RequestDto;
 public class ColoursDto
 {
     public ColourEnum ColourId { get; init; }

@@ -8,9 +8,9 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.VehicleColours.Queries.GetAllColours;
-using MotusInterview.Application.Common.Dto;
 using MockQueryable.Moq;
 using MotusInterview.Domain.Entities;
+using MotusInterview.Application.Common.Dto.RequestDto;
 
 namespace MotusInterview.Tests.VehicleColours.Queries
 {

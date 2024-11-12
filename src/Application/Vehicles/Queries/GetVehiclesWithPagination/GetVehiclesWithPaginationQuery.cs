@@ -1,4 +1,4 @@
-using MotusInterview.Application.Common.Dto;
+using MotusInterview.Application.Common.Dto.RequestDto;
 using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.Common.Mappings;
 using MotusInterview.Application.Common.Models;
