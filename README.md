@@ -32,9 +32,6 @@ Toastr (for user feedback notifications)
 Potential Future Improvements
 If I had more time, I would have liked to implement the following enhancements:
 
-Integration Testing: I would have added unit and integration tests, particularly for services and state management, to improve test coverage and ensure better code reliability.
-
-Docker: I would have containerized the application using Docker to simplify local development and deployment, and to ensure consistency across different environments.
 
 Azure Deployment: I would have explored deploying the application on Azure, which would provide scalability and easier management of the application in a cloud environment.
 
