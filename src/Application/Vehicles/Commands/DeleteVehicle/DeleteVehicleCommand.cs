@@ -1,13 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using MotusInterview.Application.Common.Dto;
-using MotusInterview.Application.Common.Interfaces;
+﻿using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.Common.Models;
-using MediatR;
 
 namespace MotusInterview.Application.Vehicles.Commands.DeleteVehicle
 {

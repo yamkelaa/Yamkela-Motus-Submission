@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MotusInterview.Domain.Entities;
+﻿using MotusInterview.Domain.Entities;
 
 namespace MotusInterview.Application.Common.Dto;
 public class VehiclesDto

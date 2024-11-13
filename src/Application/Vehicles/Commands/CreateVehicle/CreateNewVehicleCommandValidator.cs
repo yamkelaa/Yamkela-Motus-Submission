@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using MotusInterview.Domain.Entities;
+﻿using MotusInterview.Domain.Entities;
 
 namespace MotusInterview.Application.Vehicles.Commands.CreateVehicle
 {

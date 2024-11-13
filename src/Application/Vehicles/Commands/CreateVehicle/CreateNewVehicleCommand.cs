@@ -1,13 +1,6 @@
-﻿using MotusInterview.Application.Common.Dto;
-using MotusInterview.Application.Common.Interfaces;
+﻿using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.Common.Models;
 using MotusInterview.Domain.Entities;
-using AutoMapper;
-using MediatR;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
 
 namespace MotusInterview.Application.Vehicles.Commands.CreateVehicle

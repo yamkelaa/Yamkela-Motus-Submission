@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using MotusInterview.Application.Vehicles.Queries.GetVehicleById;
-
-namespace MotusInterview.Application.Vehicles.Commands.DeleteVehicle
+﻿namespace MotusInterview.Application.Vehicles.Commands.DeleteVehicle
 {
     public class DeleteVehicleCommandValidator : AbstractValidator<DeleteVehicleCommand>
     {

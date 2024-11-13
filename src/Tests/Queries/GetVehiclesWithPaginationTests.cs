@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MotusInterview.Domain.Entities;
 using MotusInterview.Application.Common.Dto.RequestDto;
+using MotusInterview.Application.Common.Dto;
 
 namespace MotusInterview.Tests.Vehicles.Queries
 {
