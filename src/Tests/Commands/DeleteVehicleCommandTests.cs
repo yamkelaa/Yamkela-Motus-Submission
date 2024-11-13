@@ -1,15 +1,8 @@
-﻿using Moq;
-using NUnit.Framework;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using MotusInterview.Application.Vehicles.Commands.DeleteVehicle;
+﻿using MockQueryable.Moq;
+using Moq;
 using MotusInterview.Application.Common.Interfaces;
-using MotusInterview.Application.Common.Models;
+using MotusInterview.Application.Vehicles.Commands.DeleteVehicle;
 using MotusInterview.Domain.Entities;
-using MockQueryable.Moq;
-using System.Collections.Generic;
 
 namespace MotusInterview.Tests.Vehicles.Commands
 {

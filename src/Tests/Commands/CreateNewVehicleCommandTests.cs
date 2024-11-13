@@ -1,7 +1,4 @@
 ﻿using Moq;
-using NUnit.Framework;
-using System.Threading;
-using System.Threading.Tasks;
 using MotusInterview.Application.Vehicles.Commands.CreateVehicle;
 using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.Common.Models;
