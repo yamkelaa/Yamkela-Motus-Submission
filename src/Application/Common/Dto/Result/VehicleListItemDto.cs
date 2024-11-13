@@ -1,4 +1,5 @@
-﻿using MotusInterview.Domain.Entities;
+﻿using MotusInterview.Application.Common.Dto.RequestDto;
+using MotusInterview.Domain.Entities;
 
 namespace MotusInterview.Application.Common.Dto;
 

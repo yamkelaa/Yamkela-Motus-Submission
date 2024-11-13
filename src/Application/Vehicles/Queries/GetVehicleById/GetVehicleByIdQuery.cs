@@ -1,6 +1,6 @@
 ﻿using MotusInterview.Application.Common.Interfaces;
-using MotusInterview.Application.Common.Dto;
 using MotusInterview.Application.Common.Mappings;
+using MotusInterview.Application.Common.Dto;
 
 
 namespace MotusInterview.Application.Vehicles.Queries.GetVehicleById

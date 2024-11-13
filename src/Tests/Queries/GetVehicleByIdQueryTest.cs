@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using MockQueryable.Moq;
 using Moq;
-using MotusInterview.Application.Common.Dto;
-using MotusInterview.Application.Common.Dto.RequestDto;
+using MotusInterview.Application.Common.Dto.Request;
 using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.Vehicles.Queries.GetVehicleById;
 using MotusInterview.Domain.Entities;

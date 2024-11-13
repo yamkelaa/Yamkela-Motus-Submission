@@ -1,5 +1,4 @@
-﻿
-namespace MotusInterview.Application.Vehicles.Queries.GetVehicleById
+﻿namespace MotusInterview.Application.Vehicles.Queries.GetVehicleById
 {
     public class GetVehicleByIdQueryValidator : AbstractValidator<GetVehicleByIdQuery>
     {
