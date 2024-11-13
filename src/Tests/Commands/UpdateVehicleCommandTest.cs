@@ -1,15 +1,9 @@
-﻿using Moq;
-using NUnit.Framework;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using MotusInterview.Application.Vehicles.Commands.UpdateVehicle;
+﻿using MockQueryable.Moq;
+using Moq;
 using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.Common.Models;
+using MotusInterview.Application.Vehicles.Commands.UpdateVehicle;
 using MotusInterview.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using MockQueryable.Moq;
 
 namespace MotusInterview.Tests.Vehicles.Commands
 {

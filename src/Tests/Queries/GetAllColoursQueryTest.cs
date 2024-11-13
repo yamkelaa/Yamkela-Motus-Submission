@@ -1,16 +1,10 @@
-using Moq;
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+using MockQueryable.Moq;
+using Moq;
+using MotusInterview.Application.Common.Dto.RequestDto;
 using MotusInterview.Application.Common.Interfaces;
 using MotusInterview.Application.VehicleColours.Queries.GetAllColours;
-using MockQueryable.Moq;
 using MotusInterview.Domain.Entities;
-using MotusInterview.Application.Common.Dto.RequestDto;
 
 namespace MotusInterview.Tests.VehicleColours.Queries
 {
